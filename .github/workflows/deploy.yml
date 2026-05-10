@@ -19,6 +19,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  NODE_VERSION: '22'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,7 +32,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
 
       - name: Install dependencies
@@ -37,9 +40,9 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "DATABASE_URL=\"file:./dev.db\"" > .env
-          echo "NEXT_PUBLIC_AMAP_KEY=demo" >> .env
-          echo "QWEATHER_KEY=demo" >> .env
+          echo 'DATABASE_URL="file:./dev.db"' > .env
+          echo 'NEXT_PUBLIC_AMAP_KEY=demo' >> .env
+          echo 'QWEATHER_KEY=demo' >> .env
 
       - name: Generate Prisma Client
         run: npx prisma generate
