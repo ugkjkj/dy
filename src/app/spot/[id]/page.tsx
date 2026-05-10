@@ -15,7 +15,7 @@ import {
 import {
   ArrowLeftOutlined,
   EnvironmentOutlined,
-  FishOutlined,
+  AimOutlined,
 } from "@ant-design/icons";
 import WeatherPanel from "@/components/WeatherPanel/WeatherPanel";
 import FishGuide from "@/components/FishGuide/FishGuide";
@@ -143,7 +143,7 @@ export default function SpotDetailPage() {
                   </Tag>
                 </Descriptions.Item>
                 <Descriptions.Item label="可钓鱼种" span={2}>
-                  <FishOutlined />{" "}
+                  <AimOutlined />{" "}
                   {spot.fishSpecies?.join("、") || "暂无数据"}
                 </Descriptions.Item>
                 {spot.description && (
