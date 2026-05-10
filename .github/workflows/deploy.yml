@@ -19,21 +19,19 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          node-version: '22'
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: '22'
           cache: "npm"
 
       - name: Install dependencies
@@ -41,23 +39,27 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo 'DATABASE_URL="file:./dev.db"' > .env
-          echo 'NEXT_PUBLIC_AMAP_KEY=demo' >> .env
-          echo 'QWEATHER_KEY=demo' >> .env
+          echo "DATABASE_URL=\"file:./dev.db\"" > .env
+          echo "NEXT_PUBLIC_AMAP_KEY=demo" >> .env
+          echo "QWEATHER_KEY=demo" >> .env
 
-      - name: Setup Prisma and build
-        run: |
-          npx prisma generate
-          npx prisma db push
-          npx tsx prisma/seed.ts
-          npm run build
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Push database schema
+        run: npx prisma db push
+
+      - name: Seed database
+        run: npx tsx prisma/seed.ts
+
+      - name: Build
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
-  # Deploy job
   deploy:
     environment:
       name: github-pages
