@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
     include: { _count: { select: { posts: true } } },
   });
 
-  const result = spots.map((spot) => ({
+  const result = spots.map((spot: any) => ({
     ...spot,
     fishSpecies: JSON.parse(spot.fishSpecies),
     postCount: spot._count.posts,
