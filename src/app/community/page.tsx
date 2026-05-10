@@ -32,10 +32,18 @@ export default function CommunityPage() {
   };
 
   const handleLike = async (postId: number) => {
-    // Optimistic update
     setPosts((prev) =>
       prev.map((p) => (p.id === postId ? { ...p, likes: p.likes + 1 } : p))
     );
+    try {
+      await fetch("/api/posts", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: postId }),
+      });
+    } catch (err) {
+      console.error("Failed to like post:", err);
+    }
   };
 
   const filteredPosts = fishFilter

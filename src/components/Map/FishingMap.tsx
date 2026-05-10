@@ -53,7 +53,7 @@ export default function FishingMap({
         // Load Amap SDK with a development key
         // Note: In production, replace with your own Amap API key
         const AMap = await AMapLoader.load({
-          key: "4be79dd3a7f57f1f5f1f5f1f5f1f5f1f", // Development key - replace in production
+          key: process.env.NEXT_PUBLIC_AMAP_KEY || "",
           version: "2.0",
           plugins: ["AMap.Scale", "AMap.ToolBar", "AMap.Geolocation"],
         });
@@ -176,7 +176,7 @@ export default function FishingMap({
         mapInstanceRef.current.destroy();
       }
     };
-  }, [spots, userLocation, onSpotClick]);
+  }, [spots, userLocation]);
 
   const getMarkerColor = (type: string) => {
     const colors: Record<string, string> = {

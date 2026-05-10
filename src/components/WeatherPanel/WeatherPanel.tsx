@@ -9,20 +9,9 @@ import {
   WarningOutlined,
   InfoCircleOutlined,
 } from "@ant-design/icons";
+import { WeatherData } from "@/types";
 
 const { Text } = Typography;
-
-interface WeatherData {
-  temp: number;
-  feelsLike: number;
-  humidity: number;
-  pressure: number;
-  windSpeed: number;
-  windDir: string;
-  text: string;
-  icon: number;
-  forecast?: { date: string; tempMax: number; tempMin: number; text: string }[];
-}
 
 interface WeatherPanelProps {
   weather: WeatherData;

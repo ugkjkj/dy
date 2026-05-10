@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Select, Input, Row, Col, Spin, Empty, Typography, Tag, Card, Statistic } from "antd";
 import {
   SearchOutlined,
@@ -58,6 +58,10 @@ export default function HomePage() {
     }
   };
 
+  const handleSpotClick = useCallback((spot: Spot) => {
+    router.push(`/spot/${spot.id}`);
+  }, [router]);
+
   const filteredSpots = spots.filter((spot) => {
     const matchType = !filter || spot.type === filter;
     const matchSearch =
@@ -72,7 +76,9 @@ export default function HomePage() {
   const avgRating = spots.length > 0
     ? (spots.reduce((sum, s) => sum + s.rating, 0) / spots.length).toFixed(1)
     : "0";
-  const nearestSpot = spots.length > 0 ? spots[0] : null;
+  const nearestSpot = spots.length > 0
+    ? spots.reduce((min, s) => (s.distance !== undefined && s.distance < (min.distance ?? Infinity) ? s : min), spots[0])
+    : null;
 
   return (
     <div style={{ background: "#f5f5f5", minHeight: "100%" }}>
@@ -163,7 +169,7 @@ export default function HomePage() {
           <FishingMap
             spots={filteredSpots}
             center={userLocation}
-            onSpotClick={(spot) => router.push(`/spot/${spot.id}`)}
+            onSpotClick={handleSpotClick}
             height="450px"
           />
         </div>

@@ -209,7 +209,7 @@ export function getFishingAdvice(
     case "fair":
       text = "条件一般 - 可以出钓，需要耐心";
       break;
-    case "poor":
+    default:
       text = "不太适合钓鱼 - 建议改日出钓";
       break;
   }

@@ -26,6 +26,14 @@ export interface Post {
   createdAt: string;
 }
 
+export interface WeatherForecast {
+  date: string;
+  tempMax: number;
+  tempMin: number;
+  text: string;
+  icon?: number;
+}
+
 export interface WeatherData {
   temp: number;
   feelsLike: number;
@@ -35,6 +43,7 @@ export interface WeatherData {
   windDir: string;
   text: string;
   icon: number;
+  forecast?: WeatherForecast[];
 }
 
 export interface FishInfo {

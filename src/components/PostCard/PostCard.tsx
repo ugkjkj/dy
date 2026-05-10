@@ -44,23 +44,18 @@ export default function PostCard({ post, onLike }: PostCardProps) {
           }}
         >
           {images.map((img, idx) => (
-            <div
+            <img
               key={idx}
+              src={img}
+              alt={`图片 ${idx + 1}`}
               style={{
                 width: 120,
                 height: 90,
-                background: "#f0f0f0",
+                objectFit: "cover",
                 borderRadius: 6,
                 flexShrink: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#999",
-                fontSize: 12,
               }}
-            >
-              图片 {idx + 1}
-            </div>
+            />
           ))}
         </div>
       )}

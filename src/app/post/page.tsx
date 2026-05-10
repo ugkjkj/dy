@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   Form,
@@ -15,6 +15,7 @@ import {
   Space,
   Tag,
   Divider,
+  Spin,
 } from "antd";
 import {
   PlusOutlined,
@@ -28,7 +29,7 @@ import { Spot, SPOT_TYPE_LABELS } from "@/types";
 const { Title, Text } = Typography;
 const { TextArea } = Input;
 
-export default function PostPage() {
+function PostForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [form] = Form.useForm();
@@ -79,7 +80,7 @@ export default function PostPage() {
     } finally {
       setUploading(false);
     }
-    return false; // Prevent default upload
+    return false;
   };
 
   const handleRemoveImage = (index: number) => {
@@ -294,5 +295,13 @@ export default function PostPage() {
         </Card>
       </div>
     </div>
+  );
+}
+
+export default function PostPage() {
+  return (
+    <Suspense fallback={<div style={{ display: "flex", justifyContent: "center", padding: 100 }}><Spin size="large" /></div>}>
+      <PostForm />
+    </Suspense>
   );
 }

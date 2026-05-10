@@ -1,6 +1,6 @@
 "use client";
 
-import { Layout, Menu, Badge, Tooltip } from "antd";
+import { Layout, Menu, Tooltip } from "antd";
 import {
   HomeOutlined,
   EditOutlined,
@@ -91,18 +91,16 @@ export default function ClientLayout({
           }}
         />
         <Tooltip title="收藏钓点">
-          <Badge count={0} size="small">
-            <HeartOutlined
-              style={{
-                color: "white",
-                fontSize: 20,
-                cursor: "pointer",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#ff4d4f")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
-            />
-          </Badge>
+          <HeartOutlined
+            style={{
+              color: "white",
+              fontSize: 20,
+              cursor: "pointer",
+              transition: "color 0.2s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#ff4d4f")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
+          />
         </Tooltip>
       </Header>
 

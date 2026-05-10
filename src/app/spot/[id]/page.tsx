@@ -20,7 +20,7 @@ import {
 import WeatherPanel from "@/components/WeatherPanel/WeatherPanel";
 import FishGuide from "@/components/FishGuide/FishGuide";
 import PostCard from "@/components/PostCard/PostCard";
-import { Spot, Post, SPOT_TYPE_LABELS, SpotType } from "@/types";
+import { Spot, Post, WeatherData, SPOT_TYPE_LABELS, SpotType } from "@/types";
 
 const typeColors: Record<SpotType, string> = {
   river: "blue",
@@ -33,7 +33,7 @@ export default function SpotDetailPage() {
   const params = useParams();
   const router = useRouter();
   const [spot, setSpot] = useState<Spot | null>(null);
-  const [weather, setWeather] = useState<Record<string, unknown> | null>(null);
+  const [weather, setWeather] = useState<WeatherData | null>(null);
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -46,23 +46,20 @@ export default function SpotDetailPage() {
   const fetchSpotDetail = async (id: string) => {
     try {
       const [spotRes, postsRes] = await Promise.all([
-        fetch(`/api/spots`),
+        fetch(`/api/spots/${id}`),
         fetch(`/api/posts?spotId=${id}`),
       ]);
 
-      const allSpots = await spotRes.json();
-      const spotData = allSpots.find((s: Spot) => s.id === parseInt(id));
-
-      if (!spotData) {
+      if (!spotRes.ok) {
         message.error("钓点不存在");
         router.push("/");
         return;
       }
 
+      const spotData = await spotRes.json();
       setSpot(spotData);
       setPosts(await postsRes.json());
 
-      // Fetch weather
       try {
         const weatherRes = await fetch(
           `/api/weather?lat=${spotData.latitude}&lng=${spotData.longitude}`
@@ -186,7 +183,7 @@ export default function SpotDetailPage() {
 
           {/* Right Column - Weather */}
           <div>
-            {weather && <WeatherPanel weather={weather as any} />}
+            {weather && <WeatherPanel weather={weather} />}
           </div>
         </div>
       </div>
