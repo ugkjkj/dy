@@ -1,6 +1,7 @@
+import path from "node:path";
 import { defineConfig } from "prisma/config";
 
 export default defineConfig({
   earlyAccess: true,
-  schema: "prisma/schema.prisma",
+  schema: path.join("prisma", "schema.prisma"),
 });

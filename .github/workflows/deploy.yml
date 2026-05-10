@@ -19,9 +19,6 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-env:
-  NODE_VERSION: '22'
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,7 +29,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: '22'
           cache: "npm"
 
       - name: Install dependencies
@@ -51,7 +48,7 @@ jobs:
         run: npx prisma db push
 
       - name: Seed database
-        run: npx tsx prisma/seed.ts
+        run: npm run seed
 
       - name: Build
         run: npm run build
