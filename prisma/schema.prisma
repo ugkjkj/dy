@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Spot {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  latitude    Float
+  longitude   Float
+  type        String   // river, lake, sea, reservoir
+  fishSpecies String   // JSON array of fish species
+  rating      Float    @default(0)
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  posts       Post[]
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  images    String   // JSON array of image URLs
+  spotId    Int
+  spot      Spot     @relation(fields: [spotId], references: [id])
+  author    String
+  fishType  String?
+  weight    Float?
+  likes     Int      @default(0)
+  createdAt DateTime @default(now())
+}
