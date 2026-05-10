@@ -7,13 +7,13 @@ import {
   EnvironmentOutlined,
   AimOutlined,
   TrophyOutlined,
-  CloudOutlined,
   CompassOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import FishingMap from "@/components/Map/FishingMap";
 import SpotCard from "@/components/SpotCard/SpotCard";
 import { Spot, SPOT_TYPE_LABELS } from "@/types";
+import { getRecommendations } from "@/lib/static-data";
 
 const { Title, Text } = Typography;
 
@@ -33,30 +33,21 @@ export default function HomePage() {
           const { longitude, latitude } = position.coords;
           setUserLocation([longitude, latitude]);
           setLocationName("已定位");
-          fetchSpots(latitude, longitude);
+          setSpots(getRecommendations(latitude, longitude));
+          setLoading(false);
         },
         () => {
           setLocationName("北京");
-          fetchSpots(39.9, 116.4);
+          setSpots(getRecommendations(39.9, 116.4));
+          setLoading(false);
         }
       );
     } else {
       setLocationName("北京");
-      fetchSpots(39.9, 116.4);
-    }
-  }, []);
-
-  const fetchSpots = async (lat: number, lng: number) => {
-    try {
-      const res = await fetch(`/api/recommend?lat=${lat}&lng=${lng}&limit=20`);
-      const data = await res.json();
-      setSpots(data);
-    } catch (err) {
-      console.error("Failed to fetch spots:", err);
-    } finally {
+      setSpots(getRecommendations(39.9, 116.4));
       setLoading(false);
     }
-  };
+  }, []);
 
   const handleSpotClick = useCallback((spot: Spot) => {
     router.push(`/spot/${spot.id}`);
@@ -71,7 +62,6 @@ export default function HomePage() {
     return matchType && matchSearch;
   });
 
-  // Stats
   const totalSpots = spots.length;
   const avgRating = spots.length > 0
     ? (spots.reduce((sum, s) => sum + s.rating, 0) / spots.length).toFixed(1)
@@ -82,7 +72,6 @@ export default function HomePage() {
 
   return (
     <div style={{ background: "#f5f5f5", minHeight: "100%" }}>
-      {/* Hero Section */}
       <div className="hero-section gradient-primary" style={{ padding: "48px 24px", textAlign: "center", color: "white" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <Title level={1} style={{ color: "white", marginBottom: 12, fontSize: 36 }}>
@@ -102,7 +91,6 @@ export default function HomePage() {
       </div>
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 16px" }}>
-        {/* Quick Stats */}
         <Row gutter={16} style={{ marginBottom: 24 }} className="animate-fade-in-up">
           <Col xs={12} sm={8}>
             <Card size="small" style={{ textAlign: "center" }}>
@@ -135,7 +123,6 @@ export default function HomePage() {
           </Col>
         </Row>
 
-        {/* Filters */}
         <Row gutter={16} style={{ marginBottom: 16 }} className="animate-fade-in">
           <Col xs={24} sm={12} md={8}>
             <Input
@@ -164,7 +151,6 @@ export default function HomePage() {
           </Col>
         </Row>
 
-        {/* Map */}
         <div className="map-container animate-fade-in-up" style={{ marginBottom: 24 }}>
           <FishingMap
             spots={filteredSpots}
@@ -174,7 +160,6 @@ export default function HomePage() {
           />
         </div>
 
-        {/* Recommended Spots */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
           <Title level={4} style={{ margin: 0 }}>
             <TrophyOutlined style={{ color: "#faad14", marginRight: 8 }} />

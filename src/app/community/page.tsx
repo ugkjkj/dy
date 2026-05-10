@@ -6,6 +6,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import PostCard from "@/components/PostCard/PostCard";
 import { Post } from "@/types";
+import { getPosts, likePost } from "@/lib/static-data";
 
 const { Title } = Typography;
 
@@ -16,45 +17,25 @@ export default function CommunityPage() {
   const [fishFilter, setFishFilter] = useState<string>("");
 
   useEffect(() => {
-    fetchPosts();
+    setPosts(getPosts());
+    setLoading(false);
   }, []);
 
-  const fetchPosts = async () => {
-    try {
-      const res = await fetch("/api/posts?limit=50");
-      const data = await res.json();
-      setPosts(data);
-    } catch (err) {
-      console.error("Failed to fetch posts:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleLike = async (postId: number) => {
+  const handleLike = (postId: number) => {
+    likePost(postId);
     setPosts((prev) =>
       prev.map((p) => (p.id === postId ? { ...p, likes: p.likes + 1 } : p))
     );
-    try {
-      await fetch("/api/posts", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: postId }),
-      });
-    } catch (err) {
-      console.error("Failed to like post:", err);
-    }
   };
 
   const filteredPosts = fishFilter
     ? posts.filter((p) => p.fishType?.includes(fishFilter))
     : posts;
 
-  const fishTypes = [...new Set(posts.map((p) => p.fishType).filter(Boolean))];
+  const fishTypes = [...new Set(posts.map((p) => p.fishType).filter(Boolean))] as string[];
 
   return (
     <div style={{ background: "#f5f5f5", minHeight: "100%" }}>
-      {/* Header */}
       <div
         style={{
           background: "linear-gradient(135deg, #722ed1 0%, #13c2c2 100%)",
@@ -72,7 +53,6 @@ export default function CommunityPage() {
       </div>
 
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px 16px" }}>
-        {/* Actions */}
         <div
           style={{
             display: "flex",
@@ -98,7 +78,6 @@ export default function CommunityPage() {
           </Button>
         </div>
 
-        {/* Posts */}
         {loading ? (
           <div style={{ textAlign: "center", padding: 60 }}>
             <Spin size="large" />

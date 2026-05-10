@@ -1,4 +1,4 @@
-name: Deploy Next.js App
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -23,9 +23,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      DATABASE_URL: "file:./dev.db"
       NEXT_PUBLIC_AMAP_KEY: "demo"
-      QWEATHER_KEY: "demo"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,21 +36,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Create .env file
-        run: |
-          echo 'DATABASE_URL="file:./dev.db"' > .env
-          echo 'NEXT_PUBLIC_AMAP_KEY=demo' >> .env
-          echo 'QWEATHER_KEY=demo' >> .env
-
-      - name: Generate Prisma Client
-        run: npx prisma generate
-
-      - name: Push database schema
-        run: npx prisma db push
-
-      - name: Seed database
-        run: npm run seed
 
       - name: Build
         run: npm run build

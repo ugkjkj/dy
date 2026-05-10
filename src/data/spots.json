@@ -1,0 +1,292 @@
+[
+  {
+    "id": 1,
+    "name": "密云水库",
+    "description": "北京最大的水库，水质优良，鱼种丰富，是京郊钓鱼的首选之地。鲤鱼、草鱼个体大，鲫鱼密度高。",
+    "latitude": 40.5127,
+    "longitude": 116.8447,
+    "type": "reservoir",
+    "fishSpecies": ["鲤鱼", "草鱼", "鲫鱼", "鲢鳙", "鲈鱼"],
+    "rating": 4.7
+  },
+  {
+    "id": 2,
+    "name": "怀柔水库",
+    "description": "风景秀丽的水库，适合休闲垂钓，鲫鱼密度高，新手友好。",
+    "latitude": 40.3167,
+    "longitude": 116.6167,
+    "type": "reservoir",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "草鱼"],
+    "rating": 4.3
+  },
+  {
+    "id": 3,
+    "name": "官厅水库",
+    "description": "永定河上游大型水库，水面广阔，大鱼出没频繁，适合海竿守大鱼。",
+    "latitude": 40.2333,
+    "longitude": 115.6,
+    "type": "reservoir",
+    "fishSpecies": ["鲤鱼", "草鱼", "鲢鳙", "翘嘴"],
+    "rating": 4.5
+  },
+  {
+    "id": 4,
+    "name": "潮白河",
+    "description": "北京东部重要河流，河段宽阔，适合多种钓法，夜钓黑鱼效果好。",
+    "latitude": 39.9167,
+    "longitude": 116.85,
+    "type": "river",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "黑鱼", "翘嘴"],
+    "rating": 4.0
+  },
+  {
+    "id": 5,
+    "name": "十三陵水库",
+    "description": "著名风景区内的水库，环境优美，适合家庭出游垂钓。",
+    "latitude": 40.25,
+    "longitude": 116.2667,
+    "type": "reservoir",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "鲢鳙"],
+    "rating": 4.2
+  },
+  {
+    "id": 6,
+    "name": "昆明湖",
+    "description": "颐和园内的湖泊，风景绝佳，可钓鲫鱼和鲤鱼，休闲首选。",
+    "latitude": 39.9983,
+    "longitude": 116.275,
+    "type": "lake",
+    "fishSpecies": ["鲫鱼", "鲤鱼"],
+    "rating": 3.8
+  },
+  {
+    "id": 7,
+    "name": "北运河",
+    "description": "北京东部的运河，历史悠久，鲫鱼和鲤鱼较多，交通便利。",
+    "latitude": 39.9,
+    "longitude": 116.7,
+    "type": "river",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "罗非鱼"],
+    "rating": 3.5
+  },
+  {
+    "id": 8,
+    "name": "平谷金海湖",
+    "description": "京东大峡谷旁的湖泊，水质清澈，适合路亚和台钓，鲈鱼出没。",
+    "latitude": 40.1833,
+    "longitude": 117.1667,
+    "type": "lake",
+    "fishSpecies": ["鲈鱼", "翘嘴", "鲤鱼", "鲫鱼"],
+    "rating": 4.4
+  },
+  {
+    "id": 9,
+    "name": "沙河水库",
+    "description": "昌平区大型水库，水深鱼大，适合守钓大鲤鱼和草鱼。",
+    "latitude": 40.15,
+    "longitude": 116.35,
+    "type": "reservoir",
+    "fishSpecies": ["鲤鱼", "草鱼", "鲫鱼"],
+    "rating": 4.1
+  },
+  {
+    "id": 10,
+    "name": "永定河",
+    "description": "北京西部重要河流，河面宽阔，鲫鱼鲤鱼密度高，适合传统钓。",
+    "latitude": 39.92,
+    "longitude": 116.22,
+    "type": "river",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "鲢鱼"],
+    "rating": 3.9
+  },
+  {
+    "id": 11,
+    "name": "淀山湖",
+    "description": "上海最大的淡水湖，水质优良，大闸蟹和鲈鱼出名，适合多种钓法。",
+    "latitude": 31.1,
+    "longitude": 120.95,
+    "type": "lake",
+    "fishSpecies": ["鲈鱼", "鲫鱼", "鲤鱼", "翘嘴", "大闸蟹"],
+    "rating": 4.5
+  },
+  {
+    "id": 12,
+    "name": "崇明岛东滩",
+    "description": "长江入海口，海淡水交汇，鲈鱼和鲻鱼丰富，适合海钓。",
+    "latitude": 31.52,
+    "longitude": 121.95,
+    "type": "sea",
+    "fishSpecies": ["鲈鱼", "鲻鱼", "海鲈"],
+    "rating": 4.2
+  },
+  {
+    "id": 13,
+    "name": "万绿湖",
+    "description": "华南最大的人工湖，水质清澈，大头鱼和鲤鱼出名，风景秀丽。",
+    "latitude": 23.75,
+    "longitude": 114.5,
+    "type": "reservoir",
+    "fishSpecies": ["鲤鱼", "鲢鳙", "草鱼", "鲫鱼"],
+    "rating": 4.6
+  },
+  {
+    "id": 14,
+    "name": "松山湖",
+    "description": "东莞松山湖，环境优美，鲫鱼密度高，适合休闲垂钓。",
+    "latitude": 22.93,
+    "longitude": 113.88,
+    "type": "lake",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "罗非鱼"],
+    "rating": 4.0
+  },
+  {
+    "id": 15,
+    "name": "珠海东澳岛",
+    "description": "珠海海岛钓场，海水清澈，石斑鱼和黄鳍鲷出没，适合船钓。",
+    "latitude": 22.1,
+    "longitude": 113.72,
+    "type": "sea",
+    "fishSpecies": ["石斑鱼", "黄鳍鲷", "海鲈"],
+    "rating": 4.4
+  },
+  {
+    "id": 16,
+    "name": "千岛湖",
+    "description": "中国著名钓鱼胜地，水质一级，有机鱼出名，大鱼频出。",
+    "latitude": 29.6,
+    "longitude": 119.0,
+    "type": "reservoir",
+    "fishSpecies": ["鲤鱼", "草鱼", "鲢鳙", "鲫鱼", "翘嘴"],
+    "rating": 4.8
+  },
+  {
+    "id": 17,
+    "name": "西湖",
+    "description": "杭州西湖，风景绝佳，鲫鱼鲤鱼较多，适合休闲台钓。",
+    "latitude": 30.25,
+    "longitude": 120.15,
+    "type": "lake",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "鲢鱼"],
+    "rating": 3.7
+  },
+  {
+    "id": 18,
+    "name": "舟山群岛",
+    "description": "中国最大的渔场，海钓天堂，鱼种丰富，适合各种海钓方式。",
+    "latitude": 30.0,
+    "longitude": 122.1,
+    "type": "sea",
+    "fishSpecies": ["黄鱼", "带鱼", "鲈鱼", "石斑鱼"],
+    "rating": 4.7
+  },
+  {
+    "id": 19,
+    "name": "太湖",
+    "description": "中国第三大淡水湖，白虾和银鱼出名，鲫鱼鲤鱼密度高。",
+    "latitude": 31.2,
+    "longitude": 120.2,
+    "type": "lake",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "鲢鳙", "翘嘴"],
+    "rating": 4.3
+  },
+  {
+    "id": 20,
+    "name": "阳澄湖",
+    "description": "大闸蟹的故乡，水质优良，鲈鱼和鲫鱼出没，秋季最佳。",
+    "latitude": 31.4,
+    "longitude": 120.8,
+    "type": "lake",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "鲈鱼"],
+    "rating": 4.1
+  },
+  {
+    "id": 21,
+    "name": "丹江口水库",
+    "description": "南水北调水源地，水质极佳，有机鱼出名，大鲤鱼频出。",
+    "latitude": 32.5,
+    "longitude": 111.5,
+    "type": "reservoir",
+    "fishSpecies": ["鲤鱼", "草鱼", "鲢鳙", "翘嘴", "鲫鱼"],
+    "rating": 4.6
+  },
+  {
+    "id": 22,
+    "name": "东湖",
+    "description": "武汉东湖，城市湖泊，鲫鱼鲤鱼较多，交通便利。",
+    "latitude": 30.55,
+    "longitude": 114.37,
+    "type": "lake",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "鲢鱼"],
+    "rating": 3.6
+  },
+  {
+    "id": 23,
+    "name": "升钟湖",
+    "description": "中国钓鱼城，国家级钓鱼基地，大鲤鱼和草鱼出名。",
+    "latitude": 31.35,
+    "longitude": 105.95,
+    "type": "reservoir",
+    "fishSpecies": ["鲤鱼", "草鱼", "鲢鳙", "鲫鱼"],
+    "rating": 4.7
+  },
+  {
+    "id": 24,
+    "name": "黑龙滩",
+    "description": "仁寿县大型水库，水质清澈，适合台钓和海竿。",
+    "latitude": 30.0,
+    "longitude": 104.15,
+    "type": "reservoir",
+    "fishSpecies": ["鲤鱼", "草鱼", "鲫鱼"],
+    "rating": 4.2
+  },
+  {
+    "id": 25,
+    "name": "微山湖",
+    "description": "中国北方最大淡水湖，鲫鱼鲤鱼丰富，传统钓圣地。",
+    "latitude": 34.6,
+    "longitude": 117.1,
+    "type": "lake",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "鲢鳙", "黑鱼"],
+    "rating": 4.4
+  },
+  {
+    "id": 26,
+    "name": "青岛金沙滩",
+    "description": "青岛著名海滩钓场，鲈鱼和黑鲷出没，适合岸钓。",
+    "latitude": 35.92,
+    "longitude": 120.2,
+    "type": "sea",
+    "fishSpecies": ["鲈鱼", "黑鲷", "比目鱼"],
+    "rating": 4.0
+  },
+  {
+    "id": 27,
+    "name": "东江湖",
+    "description": "资兴市著名水库，雾漫小东江，有机鱼出名，大鱼频出。",
+    "latitude": 25.95,
+    "longitude": 113.4,
+    "type": "reservoir",
+    "fishSpecies": ["鲤鱼", "草鱼", "鲢鳙", "翘嘴"],
+    "rating": 4.5
+  },
+  {
+    "id": 28,
+    "name": "滇池",
+    "description": "昆明滇池，高原湖泊，鲫鱼鲤鱼较多，风景秀丽。",
+    "latitude": 24.95,
+    "longitude": 102.68,
+    "type": "lake",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "鲢鱼"],
+    "rating": 3.8
+  },
+  {
+    "id": 29,
+    "name": "洱海",
+    "description": "大理洱海，高原明珠，弓鱼出名，适合休闲垂钓。",
+    "latitude": 25.75,
+    "longitude": 100.2,
+    "type": "lake",
+    "fishSpecies": ["鲫鱼", "鲤鱼", "弓鱼"],
+    "rating": 4.3
+  }
+]
