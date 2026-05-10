@@ -19,6 +19,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   # Build job
   build:
@@ -42,16 +45,12 @@ jobs:
           echo 'NEXT_PUBLIC_AMAP_KEY=demo' >> .env
           echo 'QWEATHER_KEY=demo' >> .env
 
-      - name: Setup Prisma
+      - name: Setup Prisma and build
         run: |
           npx prisma generate
-          npx prisma migrate dev --name init
+          npx prisma db push
           npx tsx prisma/seed.ts
-
-      - name: Build Next.js app
-        run: npm run build
-        env:
-          DATABASE_URL: "file:./dev.db"
+          npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
